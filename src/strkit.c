@@ -2,7 +2,7 @@
  * @file strkit.c
  * @brief Implementation of the StrKit string manipulation library
  * @author Ridan Muhammed Asif
- * @date 5, 2025
+ * @date May 5, 2025
  * @version 1.0.0
  * 
  * StrKit is a lightweight C library for common string manipulation operations.
@@ -585,7 +585,20 @@ char* str_trim_n(const char* s) {
  */
 char* str_ltrim(char* s) {
     if (!s) return NULL;
-    while (*s && custom_isspace(*s)) s++;
+    
+    char* start = s;
+    while (*start && custom_isspace(*start)) {
+        start++;
+    }
+
+    if (start != s) {
+        // Shift trimmed string to the front, including null terminator
+        size_t len = str_len(start);
+        for (size_t i = 0; i <= len; ++i) {
+            s[i] = start[i];
+        }
+    }
+
     return s;
 }
 
