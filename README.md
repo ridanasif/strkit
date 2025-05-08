@@ -97,7 +97,10 @@ int main() {
 
 ## API Documentation
 
-For detailed API documentation, see [docs/API.md](docs/API.md).
+For detailed API documentation, visit:
+
+- [Online Documentation](https://strkit.lovable.app)
+- [docs/API.md](docs/API.md) in this repository
 
 ## License
 
