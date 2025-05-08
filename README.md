@@ -2,6 +2,10 @@
 
 StrKit is a lightweight C library for common string manipulation operations. It provides both in-place functions (which modify the original string) and non-destructive functions (which return new strings).
 
+## Documentation
+
+Visit our comprehensive documentation website at [https://strkit.lovable.app](https://strkit.lovable.app) for detailed guides, API reference, and examples.
+
 ## Features
 
 - Core string operations (length, reverse, concatenate)
@@ -93,15 +97,13 @@ int main() {
 
 ## API Documentation
 
-For detailed API documentation, see [docs/API.md](docs/API.md).
+For detailed API documentation, visit:
+- [Online Documentation](https://strkit.lovable.app)
+- [docs/API.md](docs/API.md) in this repository
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Author
-
-Ridan Muhammed Asif
 
 ## Contributing
 
