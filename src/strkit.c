@@ -50,15 +50,6 @@ static inline int is_whitespace(char c) {
     return c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\f' || c == '\v';
 }
 
-/**
- * @brief Custom implementation of isspace() to avoid ctype.h dependency
- * @param c Character to check
- * @return Non-zero if whitespace, 0 otherwise
- */
-static inline int custom_isspace(char c) {
-    return is_whitespace(c);
-}
-
 /* ========== CORE STRING FUNCTIONS ========== */
 
 /**
@@ -264,7 +255,7 @@ char* str_title(char* text) {
     char* p = text;
     
     while (*p) {
-        if (custom_isspace(*p)) {
+        if (is_whitespace(*p)) {
             capitalize_next = 1;
         } else if (capitalize_next) {
             *p = char_capitalize(*p);
@@ -517,7 +508,7 @@ char* str_trim(char* s) {
     
     // Trim leading whitespace by finding first non-whitespace
     char* start = s;
-    while (*start && custom_isspace(*start)) start++;
+    while (*start && is_whitespace(*start)) start++;
     
     // If string is all whitespace, make it empty
     if (!*start) {
@@ -527,7 +518,7 @@ char* str_trim(char* s) {
     
     // Trim trailing whitespace
     char* end = s + str_len(s) - 1;
-    while (end > start && custom_isspace(*end)) end--;
+    while (end > start && is_whitespace(*end)) end--;
     *(end + 1) = '\0';
     
     // If we trimmed leading space, move the string
@@ -550,7 +541,7 @@ char* str_trim_n(const char* s) {
     
     // Skip leading whitespace
     const char* start = s;
-    while (*start && custom_isspace(*start)) start++;
+    while (*start && is_whitespace(*start)) start++;
     
     // If all spaces, return empty string
     if (!*start) {
@@ -561,7 +552,7 @@ char* str_trim_n(const char* s) {
     
     // Find end (last non-whitespace)
     const char* end = s + str_len(s) - 1;
-    while (end > start && custom_isspace(*end)) end--;
+    while (end > start && is_whitespace(*end)) end--;
     
     // Allocate and copy trimmed string
     int new_len = end - start + 1;
@@ -587,7 +578,7 @@ char* str_ltrim(char* s) {
     if (!s) return NULL;
     
     char* start = s;
-    while (*start && custom_isspace(*start)) {
+    while (*start && is_whitespace(*start)) {
         start++;
     }
 
@@ -613,7 +604,7 @@ char* str_ltrim_n(const char* s) {
     
     // Skip leading whitespace
     const char* start = s;
-    while (*start && custom_isspace(*start)) start++;
+    while (*start && is_whitespace(*start)) start++;
     
     // Get length of trimmed string
     int new_len = str_len(start);
@@ -643,7 +634,7 @@ char* str_rtrim(char* s) {
     if (len == 0) return s;
     
     char* end = s + len - 1;
-    while (end >= s && custom_isspace(*end)) end--;
+    while (end >= s && is_whitespace(*end)) end--;
     *(end + 1) = '\0';
     
     return s;
@@ -667,7 +658,7 @@ char* str_rtrim_n(const char* s) {
     
     // Find last non-whitespace character
     const char* end = s + len - 1;
-    while (end >= s && custom_isspace(*end)) end--;
+    while (end >= s && is_whitespace(*end)) end--;
     
     // Calculate new length
     int new_len = end - s + 1;
